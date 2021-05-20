@@ -1,0 +1,35 @@
+version: '2.2'
+services:
+  rabbitmq:
+    image: rabbitmq:3.8.4-management
+    container_name: cent_rabbitmq
+    ports:
+      - "6440:15671"
+      - "6441:5671"
+    volumes:
+      - ./config/rabbitmq/cert:/cert_rabbitmq/
+      - cent_rabbitmq:/var/lib/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: "orangehrm"
+      RABBITMQ_DEFAULT_PASS: "1234"
+      RABBITMQ_SSL_CERTFILE: /cert_rabbitmq/orangehrm.crt
+      RABBITMQ_SSL_KEYFILE: /cert_rabbitmq/orangehrm.key
+      RABBITMQ_SSL_CACERTFILE: /cert_rabbitmq/orangehrm.crt
+      RABBITMQ_SSL_FAIL_IF_NO_PEER_CERT: 'false'
+      RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: '-rabbit ssl_listeners [{"::",5671}] -rabbit ssl_options [{certfile,"/cert_rabbitmq/orangehrm.crt"},{keyfile,"/cert_rabbitmq/orangehrm.key"},{cacertfile,"/cert_rabbitmq/orangehrm.crt"},{verify,verify_peer},{depth,3},{fail_if_no_peer_cert,false}] -rabbit tcp_listeners [{"::",5672}]'
+    networks:
+      rabbitmqnet:
+        ipv4_address: 172.18.1.100
+    restart: always
+    
+networks:
+  rabbitmqnet:
+     driver: bridge
+     ipam:
+      config:
+        - subnet: 172.18.1.0/16
+          gateway: 172.18.1.1
+
+volumes:
+  cent_rabbitmq:
+
