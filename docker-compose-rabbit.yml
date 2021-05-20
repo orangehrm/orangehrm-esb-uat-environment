@@ -2,13 +2,13 @@ version: '2.2'
 services:
   rabbitmq:
     image: rabbitmq:3.8.4-management
-    container_name: cent_rabbitmq
+    container_name: uat_rabbitmq
     ports:
-      - "6440:15671"
-      - "6441:5671"
+      - "16671:15671"
+      - "6671:5671"
     volumes:
       - ./config/rabbitmq/cert:/cert_rabbitmq/
-      - cent_rabbitmq:/var/lib/rabbitmq
+      - uat_rabbitmq:/var/lib/rabbitmq
     environment:
       RABBITMQ_DEFAULT_USER: "orangehrm"
       RABBITMQ_DEFAULT_PASS: "1234"
@@ -23,7 +23,7 @@ services:
     restart: always
     
 networks:
-  rabbitmqnet:
+  uat-rabbitmqnet:
      driver: bridge
      ipam:
       config:
@@ -31,5 +31,5 @@ networks:
           gateway: 172.18.1.1
 
 volumes:
-  cent_rabbitmq:
+  uat_rabbitmq:
 
