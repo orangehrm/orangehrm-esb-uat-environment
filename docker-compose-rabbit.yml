@@ -12,7 +12,7 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: "orangehrm"
       RABBITMQ_DEFAULT_PASS: "1234"
-      RABBITMQ_DEFAULT_PASS: "X4F3&QzSt4"
+      RABBITMQ_DEFAULT_PASS: ""
       RABBITMQ_SSL_CERTFILE: /cert_rabbitmq/orangehrm.crt
       RABBITMQ_SSL_KEYFILE: /cert_rabbitmq/orangehrm.key
       RABBITMQ_SSL_CACERTFILE: /cert_rabbitmq/orangehrm.crt
