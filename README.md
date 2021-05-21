@@ -6,9 +6,9 @@ Orangehrm-esb-uat-environment  is a dockerized RabbitMQ service for OrangeHRM.
  
 **Prerequisites**
 
--Docker engine installed.(Get docker)
--Minimum docker version 17.3
--Minimum docker-compose version 1.12. (Get docker compose)
+*Docker engine installed.(Get docker)
+*Minimum docker version 17.3
+*Minimum docker-compose version 1.12. (Get docker compose)
 
 **How to use  ?**
 
