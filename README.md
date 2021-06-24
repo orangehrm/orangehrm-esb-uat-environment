@@ -22,6 +22,4 @@ cd orangehrm-esb-uat-environment
 docker-compose up -d
 ```
 
-Web UI for Centralized RabbitMQ: [https://uat-rabbitmq.orangehrm.com/]
-
 
